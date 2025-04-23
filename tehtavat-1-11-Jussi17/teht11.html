@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>8-11</title>
+</head>
+<body>
+
+<form action="http://codez.savonia.fi/jussi/api/test.php" method="get">
+  <table>
+    <tr>
+      <td><label for="oppilaitos">Oppilaitos:</label></td>
+      <td><input type="text" id="oppilaitos" name="laitos" value="Savonia AMK" readonly></td>
+    </tr>
+    <tr>
+      <td><label for="nimi">Nimi:</label></td>
+      <td><input type="text" id="nimi" name="nimi"></td>
+    </tr>
+    <tr>
+      <td><label for="vuosikurssi">Vuosikurssi:</label></td>
+      <td><input type="password" id="vuosikurssi" name="vuosikurssi"></td>
+    </tr>
+    <tr>
+      <td><label for="kurssinnimi">Kurssin nimi:</label></td>
+      <td>
+        <select id="kurssinnimi" name="course[]" multiple size="5">
+          <optgroup label="Ohjelmointi">
+            <option value="Webohjelmointi">Webohjelmointi</option>
+            <option value="Python">Python</option>
+            <option value="Alkeet">Alkeet</option>
+          </optgroup>
+          <optgroup label="Luonnontieteet">
+            <option value="Matematiikka">Matematiikka</option>
+            <option value="Fysiikka">Fysiikka</option>
+            <option value="Kemia">Kemia</option>
+          </optgroup>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="kurssintyyppi">Kurssin tyyppi:</label></td>
+      <td>
+        <select id="kurssintyyppi" name="tyyppi">
+          <option value="Lahiopetus">Lahiopetus</option>
+          <option value="Etaopetus">Etaopetus</option>
+          <option value="Hybridiopetus">Hybridiopetus</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Sukupuoli:</td>
+      <td>
+        <input type="radio" id="mies" name="sukupuoli" value="Mies">
+        <label for="mies">Mies</label><br>
+        <input type="radio" id="nainen" name="sukupuoli" value="Nainen">
+        <label for="nainen">Nainen</label><br>
+        <input type="radio" id="muu" name="sukupuoli" value="Muu" checked>
+        <label for="muu">Muu</label>
+      </td>
+    </tr>
+    <tr>
+      <td>Harrastukset:</td>
+      <td>
+        <input type="checkbox" id="pelaaminen" name="hobbies[]" value="Pelaaminen">
+        <label for="pelaaminen">Pelaaminen</label><br>
+        <input type="checkbox" id="lenkkeily" name="hobbies[]" value="Lenkkeily">
+        <label for="lenkkeily">Lenkkeily</label><br>
+        <input type="checkbox" id="kuntosali" name="hobbies[]" value="Kuntosali" checked>
+        <label for="kuntosali">Kuntosali</label><br>
+        <input type="checkbox" id="lukeminen" name="hobbies[]" value="Lukeminen">
+        <label for="lukeminen">Lukeminen</label>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="reset" value="Tyhjennä"><br>
+        <input type="submit" value="Lähetä"><br>
+        <input type="image" src="naama.png" alt="Lähetä kuva" width="20" height="20" style="background-color: white; border: none;">
+      </td>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>

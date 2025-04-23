@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 20px;
+}
+table {
+    border-collapse: collapse;
+}
+td {
+    vertical-align: top;
+}
+
+li {
+    margin-bottom: 10px;
+}
+ol {
+    padding-top: 100px;
+}
+ol li{
+    list-style-type: none;
+    color: blue;
+}
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}

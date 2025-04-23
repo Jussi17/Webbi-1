@@ -1,0 +1,29 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Calibri, sans-serif;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+
+a {
+    color: blue;
+    text-decoration: underline;
+}
+
+
+.formatted-text {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+
+ol {
+    margin: 0;
+    padding-left: 20px;
+}

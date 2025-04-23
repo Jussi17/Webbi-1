@@ -1,0 +1,27 @@
+[
+    {
+      "avain": "1",
+      "lyhenne": "YA",
+      "selite": "Yritysasiakas"
+    },
+    {
+      "avain": "2",
+      "lyhenne": "KA",
+      "selite": "Kuluttaja asiakas"
+    },
+    {
+      "avain": "3",
+      "lyhenne": "RA",
+      "selite": "????"
+    },
+    {
+      "avain": "4",
+      "lyhenne": "JA",
+      "selite": "Joukkue asiakas"
+    },
+    {
+      "avain": "5",
+      "lyhenne": "TA",
+      "selite": "ERIKOISVALINTA"
+    }
+  ]

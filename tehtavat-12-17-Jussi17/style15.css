@@ -1,0 +1,26 @@
+.grid-table {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, auto);
+    gap: 1px;
+    background-color: #ccc;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.grid-table > div {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.header {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+.formatted-text {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 30px;
+}
+

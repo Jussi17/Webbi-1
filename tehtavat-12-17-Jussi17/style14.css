@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.main-content {
+    display: flex;
+    background-color: #e0e0e0;
+    padding: 10px;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: blue;
+    text-decoration: none;
+}
+
+#alavalikko {
+    margin-left: 10px;
+}
+
+.search-container {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.search-container input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-container button {
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    margin-left: 5px;
+}

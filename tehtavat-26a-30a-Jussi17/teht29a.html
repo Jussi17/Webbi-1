@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #vasen {
+            float: left;
+            padding: 10px;
+        }
+
+        #oikea {
+            float: left;
+            padding: 10px;
+        }
+
+        #osoite, #kartta, #kuva1, #kuva2 {
+            display: none;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="vasen">
+        <ul>
+            <li><a href="#" id="link1">Yhteystiedot</a></li>
+            <li><a href="#" id="link2">Kartta</a></li>
+            <li><a href="#" id="link3">Valokuvat</a></li>
+        </ul>
+    </div>
+
+    <div id="oikea">
+        <p id="osoite">Savonia AMK Microkatu 1</p>
+        <p id="kartta">Savonian campusalueen kartta</p>
+        <img id="kuva1" src="kuva1punainen.png" alt="Kuva 1">
+        <img id="kuva2" src="kuva2oranssi.png" alt="Kuva 2">
+    </div>
+
+    <script>
+        document.getElementById("link1").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("osoite").style.display = "block";
+            document.getElementById("kartta").style.display = "none";
+            document.getElementById("kuva1").style.display = "none";
+            document.getElementById("kuva2").style.display = "none";
+        });
+
+        document.getElementById("link2").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("osoite").style.display = "none";
+            document.getElementById("kartta").style.display = "block";
+            document.getElementById("kuva1").style.display = "none";
+            document.getElementById("kuva2").style.display = "none";
+        });
+
+        document.getElementById("link3").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("osoite").style.display = "none";
+            document.getElementById("kartta").style.display = "none";
+            document.getElementById("kuva1").style.display = "inline";
+            document.getElementById("kuva2").style.display = "inline";
+        });
+
+        const kuva1 = document.getElementById("kuva1");
+        kuva1.addEventListener("mouseover", () => {
+            kuva1.src = "kuva1vihrea.png";
+        });
+        kuva1.addEventListener("mouseout", () => {
+            kuva1.src = "kuva1punainen.png"; 
+        });
+
+        const kuva2 = document.getElementById("kuva2");
+        kuva2.addEventListener("mouseover", () => {
+            kuva2.src = "kuva2sininen.png";
+        });
+        kuva2.addEventListener("mouseout", () => {
+            kuva2.src = "kuva2oranssi.png"; 
+        });
+    </script>
+</body>
+</html>

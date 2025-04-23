@@ -1,0 +1,24 @@
+.savonia-logo {
+    width: 120px;
+    height: 32px;
+}
+
+.table th, .table td {
+    white-space: nowrap;
+}
+
+.form-label, h5 {
+    font-weight: bold;
+}
+
+
+.section-spacing {
+    margin-bottom: 2rem;
+}
+
+footer {
+    font-size: 0.9rem;
+    position:fixed;
+    padding-top: 20%;
+    color: #4b5964;
+}

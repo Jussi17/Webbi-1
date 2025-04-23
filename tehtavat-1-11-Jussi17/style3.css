@@ -1,0 +1,61 @@
+main {
+    max-width: 1200px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+header {
+    padding: 10px;
+    width: 30%;
+    text-align: center;
+    border: 3px solid red;
+}
+nav {
+    text-align: center;
+    margin: 10px 0;
+    width: 30%;
+    border: 3px dashed black;
+    padding: 10px;
+}
+section {
+    margin: 20px 0;
+}
+#tv {
+    border: 3px solid darkblue;
+    margin-bottom: 20px;
+    width: 30%;
+    padding: 10px;
+}
+#lehdet {
+    border: 3px solid darkblue;
+    margin-bottom: 20px;
+    width: 30%;
+    padding: 10px;
+}
+#verkkokaupat {
+    border: 3px solid yellow;
+    margin-bottom: 20px;
+    width: 30%;
+    padding: 10px;
+}
+#korkeakoulut {
+    border: 3px solid yellow;
+    margin-bottom: 20px;
+    width: 30%;
+    padding: 10px;
+}
+h1 {
+    padding-bottom: 10px;
+}
+#otsikko {
+    white-space: nowrap;
+}
+
+#blue {
+    color: rgb(173, 216, 230);
+    cursor: url('savonialogo.png'), auto;
+}
+  
+#lista {
+    list-style-image: url('naama.png');
+}

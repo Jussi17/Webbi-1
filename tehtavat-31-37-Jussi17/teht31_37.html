@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teht31-37</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <label>Nimi&nbsp;&nbsp;</label>
+    <input type="text" id="etunimi" placeholder="Etunimi"><br><br>
+
+    <label>Osoite</label>
+    <input type="text" id="osoite" placeholder="Osoite"><br><br>
+
+    <button id="tallenna">Tallenna</button>&nbsp;&nbsp;
+    <button id="lisaa">Lisää</button><br>
+
+    <p id="virhe" style="color: red;"></p>
+    <p id="error" style="color: red;"></p>
+    <p id="tulos"></p><br><br>
+    <select id="results">
+
+    </select><br><br>
+
+    <p>Syntymäpäivä: <input type="text" id="pvm" style="cursor: pointer;"></p>
+    <p id="pvm_result" style="color: red;">Pvm:ää ei ole valittu</p><br><br>
+
+    <div class="ui-widget">
+        <label>Syntymäpaikka: </label>
+        <input id="autoc" placeholder="Kaupunki">
+    </div><br><br>
+
+    <button id="rekisteroidy">Rekisteröidy</button>
+    <p id="d_content" style="display: none;">Tämä oli alunperin piilossa, mutta näkyykö nyt?</p>
+    <p id="d_results"></p>
+
+    <div id="dialog" title="Rekisteröityminen" style="display: none;">
+        <form>
+            <label for="d_nimi">Nimi:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="d_nimi" name="d_nimi"><br><br>
+            <label for="d_tunnus">Tunnus:</label>
+            <input type="text" id="d_tunnus" name="d_tunnus"><br><br>
+            <h3 id="d_error" style="color: red; display: none;">Data väärin</h3>
+        </form>
+    </div><br>
+
+    <button id="hae_tyypit">Hae tyypit</button>&nbsp;&nbsp;
+    <button id="hae_data">Hae data</button><br><br>
+
+    <select id="tuotetyypit">
+        <option value="">Valitse tuotetyyppi</option>
+    </select><br><br>
+
+    <div id="haku">
+        <label for="nimi_he">Nimi:</label>
+        <input type="text" id="nimi_he">
+
+        <label for="valmistaja_he">Valmistaja:</label>
+        <input type="text" id="valmistaja_he">
+
+        <label for="tuotetyypit_he">Tuotetyyppi:</label>
+        <select id="tuotetyypit_he">
+            <option id="option" value="-1">Ei valintaa</option>
+        </select>
+
+        <button id="hae">Hae data</button>
+    </div><br><br>
+
+
+    <table id="tuotteet" border="3" style="border-collapse: collapse; width: 80%;">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Selite</th>
+                <th>Tyyppi</th>
+                <th>Ostopvm</th>
+                <th>Valmistaja</th>
+                <th>Hinta</th>
+                <th>Toiminnot</th>
+            </tr>
+        </thead>
+        <tbody id="taulukon-body" align="center">
+
+        </tbody>
+    </table>
+
+    <script>
+        $(function () {
+            $("#tallenna").click(function () {
+                var etunimi = $("#etunimi").val();
+                var osoite = $("#osoite").val();
+                var virhe = $("#virhe");
+                var tulos = $("#tulos").val();
+
+                if (etunimi.length < 5 && osoite.length < 5) {
+                    $("#virhe").text("Pakollisia tietoja puuttuu: Etunimi on liian lyhyt. Osoite on liian lyhyt.");
+                }
+                else if (etunimi.length < 5) {
+                    $("#virhe").text("Pakollisia tietoja puuttuu: Etunimi on liian lyhyt.");
+                } else if (osoite.length < 5) {
+                    $("#virhe").text("Pakollisia tietoja puuttuu: Osoite on liian lyhyt.");
+                }
+                else {
+                    $("#virhe").text("");
+                    $("#tulos").text(etunimi + "," + osoite);
+                }
+            });
+        });
+
+        // Lisää-nappi
+        $("#lisaa").click(function () {
+            const etunimi = $("#etunimi").val();
+            const osoite = $("#osoite").val();
+            if (etunimi.length < 5 && osoite.length < 5) {
+                $("#error").text("Pakollisia tietoja puuttuu: Etunimi on liian lyhyt. Osoite on liian lyhyt.").show();
+                setTimeout(() => $("#error").fadeOut(), 3000);
+            } else if (etunimi.length < 5) {
+                $("#error").text("Pakollisia tietoja puuttuu: Etunimi on liian lyhyt.").show();
+            } else if (osoite.length < 5) {
+                $("#error").text("Pakollisia tietoja puuttuu: Osoite on liian lyhyt.").show();
+            } else {
+                $("#error").text("");
+                $("#results").append(`<option>${etunimi}, ${osoite}</option>`);
+            }
+        });
+
+        // Datepicker
+        $(function () {
+            $.datepicker.setDefaults($.datepicker.regional["fi"]);
+
+            $("#pvm").datepicker({
+                dateFormat: "dd.mm.yy",
+                maxDate: new Date(2020, 11, 31),
+                minDate: new Date(2020, 7, 1),
+                //defaultDate: new Date(2020, 7, 1),
+                beforeShow: function () {
+                    $("#pvm_result").text("");
+                },
+                onSelect: function (dateText) {
+                    $("#pvm_result").text(dateText);
+                    $("#pvm_result").css("color", "black");
+                }
+            });
+
+            $("#pvm").hover(
+                function () {
+                    $(this).css("cursor", "pointer");
+                },
+                function () {
+                    $(this).css("cursor", "default");
+                }
+            );
+        });
+
+        $.datepicker.regional["fi"] = {
+            closeText: "Sulje",
+            prevText: "Edellinen",
+            nextText: "Seuraava",
+            nextText: ">",
+            currentText: "",
+            monthNames: [
+                "Tammikuu", "Helmikuu", "Maaliskuu", "Huhtikuu", "Toukokuu", "Kesäkuu",
+                "Heinäkuu", "Elokuu", "Syyskuu", "Lokakuu", "Marraskuu", "Joulukuu"
+            ],
+            monthNamesShort: [
+                "Tammi", "Helmi", "Maalis", "Touko", "Kesä", "Heinä",
+                "Elo", "Syys", "Loka", "Marras", "Joulu"
+            ],
+            dayNames: [
+                "Sunnuntai", "Maanantai", "Tiistai", "Keskiviikko", "Torstai", "Perjantai", "Lauantai"
+            ],
+            dayNamesShort: ["Su", "Ma", "Ti", "Ke", "To", "Pe", "La"],
+            dayNamesMin: ["Su", "Ma", "Ti", "Ke", "To", "Pe", "La"],
+            weekHeader: "Vk",
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ""
+        };
+
+        // Autocomplete
+        $(function () {
+            $("#autoc").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "http://codez.savonia.fi/jussi/api/json_data.php",
+                        dataType: "json",
+                        data: {
+                            term: request.term
+                        },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.label.split(",")[0],
+                                    value: item.value.split(",")[0]
+                                };
+                            }));
+                        },
+                        error: function () {
+                            console.error("Virhe haettaessa tietoja palvelimelta.");
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    console.log(ui.item.value);
+                }
+            });
+        });
+
+        // Dialogi/Rekisteröityminen
+        $(function () {
+            $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                buttons: {
+                    "Tallenna": function () {
+                        var nimi = $("#d_nimi").val();
+                        var tunnus = $("#d_tunnus").val();
+                        if (nimi.length >= 5 && tunnus.length >= 5) {
+                            $("#d_error").hide();
+                            $("#d_content").show();
+                            $("#d_results").text(nimi + ", " + tunnus);
+                            $(this).dialog("close");
+                        } else {
+                            $("#d_error").show();
+                        }
+                    },
+                    "Peruuta": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $("#rekisteroidy").click(function () {
+                $("#dialog").dialog("open");
+            });
+        });
+
+        // Hae tyypit
+        $(function () {
+            function haeTyypit() {
+                $.ajax({
+                    url: "http://localhost:3000/tuotetyyppi",
+                    method: "GET",
+                    success: function (data) {
+                        $("#tuotetyypit").empty().append('<option value="">Valitse tuotetyyppi</option>');
+                        $("#tuotetyypit_he").empty().append('<option value="-1">-- Valitse tuotetyyppi --</option>');
+                        data.forEach(function (tyyppi) {
+                            $("#tuotetyypit").append(`<option value="${tyyppi.id}">${tyyppi.nimi}</option>`);
+                            $("#tuotetyypit_he").append(`<option value="${tyyppi.id}">${tyyppi.nimi}</option>`);
+                        });
+                    },
+                    error: function () {
+                        console.error("Virhe haettaessa tuotetyyppejä.");
+                    }
+                });
+            }
+            haeTyypit();
+            $("#hae_tyypit").click(haeTyypit);
+        });
+
+        // Hae data
+        $(function () {
+            $("#hae").click(function () {
+                const nimi = $("#nimi_he").val();
+                const valmistaja = $("#valmistaja_he").val();
+                const tyyppi_id = $("#tuotetyypit_he").val();
+
+                let query = [];
+                if (nimi) query.push(`nimi=${nimi}`);
+                if (valmistaja) query.push(`valmistaja=${valmistaja}`);
+                if (tyyppi_id !== "-1") query.push(`tyyppi_id=${tyyppi_id}`);
+                const queryString = query.length > 0 ? `?${query.join("&")}` : "";
+
+                $.ajax({
+                    url: `http://localhost:3000/tuote${queryString}`,
+                    method: "GET",
+                    success: function (data) {
+                        tulostaTuotteet(data);
+                    },
+                    error: function () {
+                        console.error("Virhe haettaessa tuotteita.");
+                    }
+                });
+            });
+
+            // haeTuotteet
+            window.haeTuotteet = function () {
+                $.ajax({
+                    url: "http://localhost:3000/tuote",
+                    method: "GET",
+                    success: function (data) {
+                        data.forEach(function (tuote) {
+                            const tyyppiOption = $(`#tuotetyypit_he option[value='${tuote.tyyppi_id}']`);
+                            tuote.tyyppi_nimi = tyyppiOption.length ? tyyppiOption.text() : "Tuntematon";
+                        });
+
+                        tulostaTuotteet(data);
+                    },
+                    error: function () {
+                        console.error("Virhe haettaessa tuotteita.");
+                    }
+                });
+            };
+
+            $("#hae_data").click(function () {
+                haeTuotteet();
+            });
+
+            haeTuotteet();
+        });
+
+        // Tulosta tuotteet
+        function tulostaTuotteet(data) {
+            const tbody = document.getElementById("taulukon-body");
+            tbody.innerHTML = "";
+
+            data.forEach(tuote => {
+                const tr = document.createElement("tr");
+
+                tr.innerHTML = `
+                    <td>${tuote.nimi}</td>
+                    <td>${tuote.selite}</td>
+                    <td>${tuote.tyyppi_nimi || "Tuntematon"}</td>
+                    <td>${tuote.ostopvm}</td>
+                    <td>${tuote.valmistaja}</td>
+                    <td>${tuote.hinta}</td>
+                    <td><button id="poista_${tuote.id}">Poista</button></td>
+                `;
+
+                tbody.appendChild(tr);
+
+                document.getElementById(`poista_${tuote.id}`).addEventListener("click", () => {
+                    poistaTuote(tuote.id);
+                });
+            });
+        }
+
+        // Poista tuote
+        function poistaTuote(id) {
+            fetch(`http://localhost:3000/tuote/${id}`, {
+                method: "DELETE"
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Poisto epäonnistui");
+                    }
+                    console.log(`Tuote ${id} poistettu.`);
+                    haeTuotteet(); 
+                })
+                .catch(error => {
+                    console.error("Virhe poistettaessa:", error);
+                });
+        }
+    </script>
+
+</body>
+
+</html>

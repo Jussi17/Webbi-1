@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style16.css">
+  <title>Tehtävä 16</title>
+</head>
+<body>
+  <h1>Syötä ilmoittautumistiedot</h1>
+  <form action="http://codez.savonia.fi/jussi/api/test.php" method="get">
+
+    <div class="form-row">
+      <label class="laabeli" for="nimi">Nimi:</label>
+      <div class="input-container">
+        <input type="text" id="nimi" name="nimi">
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <label class="laabeli" for="vuosikurssi">Vuosikurssi:</label>
+      <div class="input-container">
+        <input type="password" id="vuosikurssi" name="vuosikurssi">
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <label class="laabeli" for="oppilaitos">Oppilaitos:</label>
+      <div class="input-container">
+        <input type="text" id="oppilaitos" name="laitos" value="Savonia AMK" readonly>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <label class="laabeli" for="kurssinnimi">Kurssin nimi:</label>
+      <div class="input-container">
+        <select id="kurssinnimi" name="course[]">
+          <option value="TKJ">TKJ</option>
+          <option value="ATK">ATK</option>
+          <option value="ITC">ITC</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <label class="laabeli" for="kurssintoteutus">Kurssin toteutus:</label>
+      <div class="input-container">
+        <select id="kurssintoteutus" name="toteutus">
+          <option value="Lahiopetus">lähiopetus</option>
+          <option value="Etaopetus">etäopetus</option>
+          <option value="Hybridiopetus">hybridiopetus</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <label class="laabeli">Sukupuoli:</label>
+      <div class="radio-container">
+        <label class="option-label">mies</label>
+        <input type="radio" id="mies" name="sukupuoli" value="mies">
+        
+        <label class="option-label">nainen</label>
+        <input type="radio" id="nainen" name="sukupuoli" value="nainen">
+        
+        <label class="option-label">en kommentoi</label>
+        <input type="radio" id="ek" name="sukupuoli" value="Ek">
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <label class="laabeli">Harrastukset:</label>
+      <div class="checkbox-container">
+        <label class="option-label">ATK-pelit</label>
+        <input type="checkbox" id="atkpelit" name="hobbies[]" value="ATK-pelit">
+        
+        <label class="option-label">Tietokonepelit</label>
+        <input type="checkbox" id="tietokonepelit" name="hobbies[]" value="Tietokonepelit">
+        
+        <label class="option-label">PC-pelit</label>
+        <input type="checkbox" id="pcpelit" name="hobbies[]" value="PC-pelit" checked>
+        
+        <label class="option-label">Videopelit</label>
+        <input type="checkbox" id="videopelit" name="hobbies[]" value="Videopelit">
+      </div>
+    </div>
+    
+    <div class="button-container">
+      <button type="reset">Tyhjennä</button>
+      <button type="submit">Lähetä</button>
+    </div>
+  </form>
+</body>
+</html>

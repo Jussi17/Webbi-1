@@ -1,0 +1,92 @@
+[
+  {
+    "id": "4",
+    "nimi": "Naudan jauheliha 400g",
+    "selite": "Rasvapitoisuus 10%",
+    "tyyppi_id": 5,
+    "ostopvm": "4.10.2020",
+    "valmistaja": "Atria",
+    "hinta": "3,59 €"
+  },
+  {
+    "id": "13",
+    "nimi": "Rypälerasia",
+    "selite": "Puoli kiloa tummia rypäleitä",
+    "tyyppi_id": 3,
+    "ostopvm": "4.9.2020",
+    "valmistaja": "Rainbow",
+    "hinta": "2,39 €"
+  },
+  {
+    "id": "21",
+    "nimi": "Vaalea Lager",
+    "selite": "Kupari",
+    "tyyppi_id": 6,
+    "ostopvm": "1.5.2021",
+    "valmistaja": "Rainbow",
+    "hinta": "0,99 €"
+  },
+  {
+    "id": "14",
+    "nimi": "Tomaattimurska",
+    "selite": "Italian suosituin",
+    "tyyppi_id": 6,
+    "ostopvm": "4.10.2020",
+    "valmistaja": "Mutti",
+    "hinta": "0,89 €"
+  },
+  {
+    "id": "15",
+    "nimi": "Tomaatti-linssikeitto",
+    "selite": "KKona",
+    "tyyppi_id": 999,
+    "ostopvm": "14.9.2020",
+    "valmistaja": "Kokkikartano",
+    "hinta": "2,35 €"
+  },
+  {
+    "id": "16",
+    "nimi": "Garam masala 28g",
+    "selite": "Maustesekoitus",
+    "tyyppi_id": 9,
+    "ostopvm": "9.10.2020",
+    "valmistaja": "Meira",
+    "hinta": "0,99 €"
+  },
+  {
+    "id": "17",
+    "nimi": "Sensations Crunchy",
+    "selite": "Sitä kissa ostaisi",
+    "tyyppi_id": 8,
+    "ostopvm": "18.9.2020",
+    "valmistaja": "Latz",
+    "hinta": "3,92 €"
+  },
+  {
+    "id": "18",
+    "nimi": "Polar 15% 700g",
+    "selite": "Emmentaltyyppinen juusto",
+    "tyyppi_id": 2,
+    "ostopvm": "19.9.2020",
+    "valmistaja": "Valio",
+    "hinta": "6,59 €"
+  },
+  {
+    "id": "19",
+    "nimi": "Mustapippuri 27g",
+    "selite": "Mustapippuri kokonainen",
+    "tyyppi_id": 9,
+    "ostopvm": "12.10.2020",
+    "valmistaja": "Meira",
+    "hinta": "0,89 €"
+  },
+  {
+    "id": "20",
+    "nimi": "Dreamies Mix",
+    "selite": "Kissan makupalat 60g",
+    "tyyppi_id": 8,
+    "ostopvm": "14.9.2020",
+    "valmistaja": "Dreamies",
+    "hinta": "1,55 €"
+  }
+]

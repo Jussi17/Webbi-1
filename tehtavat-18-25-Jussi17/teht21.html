@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">>
+
+    <style>
+        .leveampi {
+            width: 300px;
+        }
+        .virhe {
+      background-color: red; 
+    }
+    article {
+      display: none;
+    }
+    article.nakyva {
+      display: block;
+    }
+    </style>
+</head>
+
+<body>
+    <h2>Syntymäaika (dd.mm.yyyy)</h2>
+    <input type="text" id="pvm" placeholder="19.09.1909">
+    <button id="tarkista">Tarkista</button>
+    <p id="tulos"></p>
+
+    <script src="tehtavat.js"></script>
+
+    <script>
+        document.getElementById("tarkista").addEventListener("click", function () {
+            const pvmInput = document.getElementById("pvm").value;
+            const tulos = teht21(pvmInput);
+            document.getElementById("tulos").textContent = tulos;
+        });
+    </script>
+
+<!-- teht22 -->
+    <h2>Etunimet</h2>
+
+    <ul id="lista">
+        <li>Maija</li>
+        <li>Liisa</li>
+        <li>Kalle</li>
+        <li>Pentti</li>
+        <li>Kroisos</li>
+    </ul>
+
+    <button id="tulosta">Tulosta nimet</button><br><br>
+
+    <input type="text" class="leveampi" id="results" readonly>
+
+    <script>
+        function teht22(listaId) {
+            const lista = document.getElementById(listaId);
+            const nimet = [];
+
+            if (lista) {
+                const items = lista.getElementsByTagName("li");
+                for (let i = 0; i < items.length; i++) {
+                    nimet.push(items[i].textContent.trim());
+                }
+            }
+
+            return nimet;
+        }
+
+        document.getElementById("tulosta").addEventListener("click", function () {
+            const tulokset = teht22("lista");
+            document.getElementById("results").value = tulokset.join(",");
+        });
+    </script>
+
+<!-- teht23 + 24 -->
+<h2>Käyttäjätiedot</h2>
+
+<form id="data">
+    <label for="etunimi">Etunimi:</label>
+    <input type="text" class="nimi" id="etunimi" required><br><br>
+
+    <label for="lahiosoite">Lähiosoite:</label>
+    <input type="text" class="osoite" id="lahiosoite" required><br><br>
+</form>
+<button type="button" id="lisaa">Lisää</button>
+<button type="button" id="lisaa_24">Lisää24</button>
+
+<h3>Lisätyt käyttäjät:</h3>
+<table id="results_23">
+    <tbody id="taulukko_body">
+
+    </tbody>
+</table>
+
+<script>
+    function lisaaRivi(nimi, osoite) {
+      const taulu = document.getElementById("results_23");
+      const rivi = document.createElement("tr");
+
+      const td1 = document.createElement("td");
+      td1.textContent = nimi;
+
+      const td2 = document.createElement("td");
+      td2.textContent = osoite;
+
+      rivi.appendChild(td1);
+      rivi.appendChild(td2);
+      taulu.appendChild(rivi);
+    }
+
+    document.getElementById("lisaa_24").addEventListener("click", () => {
+      const etunimi = document.getElementById("etunimi");
+      const lahiosoite = document.getElementById("lahiosoite");
+
+      const nimi = etunimi.value.trim();
+      const osoite = lahiosoite.value.trim();
+
+      let valid = true;
+
+      if (!nimi) {
+        etunimi.classList.add("virhe");
+        valid = false;
+      } else {
+        etunimi.classList.remove("virhe");
+      }
+
+      if (!osoite) {
+        lahiosoite.classList.add("virhe");
+        valid = false;
+      } else {
+        lahiosoite.classList.remove("virhe");
+      }
+
+      if (valid) {
+        lisaaRivi(nimi, osoite);
+        etunimi.value = "";
+        lahiosoite.value = "";
+      }
+    });
+
+    document.getElementById("lisaa").addEventListener("click", () => {
+      const nimi = document.getElementById("etunimi").value.trim();
+      const osoite = document.getElementById("lahiosoite").value.trim();
+
+      if (nimi && osoite) {
+        lisaaRivi(nimi, osoite);
+               etunimi.value = "";
+        lahiosoite.value = "";
+      }
+    });
+  </script>
+
+<!-- teht25 -->
+<nav>
+    <a href="#" id="link1">Näytä artikkeli 1</a> |
+    <a href="#" id="link2">Näytä artikkeli 2</a> |
+    <a href="#" id="link3">Näytä artikkeli 3</a> |
+    <a href="#" id="link4">Näytä artikkeli 4</a>
+  </nav>
+
+  <article id="article1" class="nakyva">
+    <h2>Artikkeli 1</h2>
+    <p>Ollaan artikkelissa 1.</p>
+  </article>
+
+  <article id="article2">
+    <h2>Artikkeli 2</h2>
+    <p>Ollaan artikkelissa 2.</p>
+  </article>
+
+  <article id="article3">
+    <h2>Artikkeli 3</h2>
+    <p>Ollaan artikkelissa 3.</p>
+  </article>
+
+  <article id="article4">
+    <h2>Artikkeli 4</h2>
+    <p>Ollaan artikkelissa 4.</p>
+  </article>
+
+  <script>
+    function naytaArtikkeli(nro) {
+      for (let i = 1; i <= 4; i++) {
+        const artikkeli = document.getElementById("article" + i);
+        artikkeli.classList.remove("nakyva");
+      }
+      document.getElementById("article" + nro).classList.add("nakyva");
+    }
+
+    document.getElementById("link1").addEventListener("click", () => naytaArtikkeli(1));
+    document.getElementById("link2").addEventListener("click", () => naytaArtikkeli(2));
+    document.getElementById("link3").addEventListener("click", () => naytaArtikkeli(3));
+    document.getElementById("link4").addEventListener("click", () => naytaArtikkeli(4));
+  </script>
+</body>
+
+</html>

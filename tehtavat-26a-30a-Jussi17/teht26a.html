@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <label>nimi</label>
+    <input type="text" id="nimi" name="nimi" value=""><br><br>
+    <label>osoite</label>
+    <input type="text" id="osoite" name="osoite" value=""><br><br>
+
+    <label>ammatti</label>
+    <select name="valikko" id="ammatti">
+        <option value="tyhja" selected></option>
+        <option value="kirvesmies">Kirvesmies</option>
+        <option value="poliisi">Poliisi</option>
+        <option value="pianisti">Pianisti</option>
+    </select><br><br>
+
+    <input type="checkbox" id="erityisruokavalio" value="Erityisruokavalio">
+    <label for="erityisruokavalio">Erityisruokavalio</label><br><br>
+
+    <input type="checkbox" id="tarvitsee_majoituksen" value="Tarvitsee majoituksen">
+    <label for="tarvitsee_majoituksen">Tarvitsee majoituksen</label><br><br>
+
+    <input type="checkbox" id="opiskelija" value="Opiskelija">
+    <label for="opiskelija">Opiskelija</label>&nbsp;&nbsp;<input type="text" id="opiskelijanro" name="Opiskelijanro" placeholder="Opiskelijanro" value="" style="display: none;"><br><br>
+
+    <button id="reg">Rekisteröidy 26</button>
+    <button id="reg_27">Rekisteröidy 27</button>
+    <h4 id="error" class="error"></h4>
+    <h4 id="error_ammatti" class="error"></h4>
+
+    <script>
+        document.getElementById("opiskelija").addEventListener("change", (event) => {
+            const opiskelijanroField = document.getElementById("opiskelijanro");
+            if (event.target.checked) {
+                opiskelijanroField.style.display = "inline";
+            } else {
+                opiskelijanroField.style.display = "none";
+                opiskelijanroField.value = ""; 
+            }
+        });
+
+        // Tehtävä 26a
+        document.getElementById("reg").addEventListener("click", () => {
+            const nimi = document.getElementById("nimi").value.trim();
+            const osoite = document.getElementById("osoite").value.trim();
+            const errorElement = document.getElementById("error");
+            const resultsElement = document.getElementById("data");
+
+            errorElement.textContent = "";
+            resultsElement.textContent = "";
+
+            if (nimi.length < 5 && osoite.length < 5) {
+                errorElement.textContent = "Nimi ja osoite väärin";
+            } else if (nimi.length < 5) {
+                errorElement.textContent = "Nimi väärin";
+            } else if (osoite.length < 5) {
+                errorElement.textContent = "Osoite väärin";
+            } else {
+                resultsElement.textContent = `${nimi},${osoite}`;
+                document.getElementById("nimi").value = "";
+                document.getElementById("osoite").value = "";
+            }
+        });
+
+        // Tehtävä 27a ja 28a
+        document.getElementById("reg_27").addEventListener("click", () => {
+            const selectedValue = document.getElementById("ammatti").value;
+            const errorAmmattiElement = document.getElementById("error_ammatti");
+            const tyoElement = document.getElementById("tyo");
+            const optiotElement = document.getElementById("optiot");
+            const opiskelijanroElement = document.getElementById("opiskelijanro");
+            const oNroElement = document.getElementById("o_nro");
+
+            errorAmmattiElement.textContent = "";
+            tyoElement.textContent = "";
+            optiotElement.textContent = "";
+            oNroElement.textContent = "";
+
+            if (selectedValue === "tyhja") {
+                errorAmmattiElement.textContent = "Valitse ammatti";
+                return;
+            }
+
+            const ammattiText = document.getElementById("ammatti").options[document.getElementById("ammatti").selectedIndex].text;
+            tyoElement.textContent = `Ammatti: ${ammattiText}`;
+
+            const checkboxes = ["erityisruokavalio", "tarvitsee_majoituksen", "opiskelija"];
+            const selectedOptions = checkboxes
+                .map(id => document.getElementById(id))
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+
+            if (selectedOptions.length > 0) {
+                optiotElement.textContent = `Valitsit seuraavat optiot:${selectedOptions.join(",")}`;
+            }
+
+            if (selectedOptions.includes("Opiskelija")) {
+                const opiskelijanro = opiskelijanroElement.value.trim();
+                if (opiskelijanro === "") {
+                    alert("Opiskelijanumero on pakollinen");
+                    return;
+                }
+                oNroElement.textContent = `Opiskelijanro: ${opiskelijanro}`;
+            }
+        });
+    </script>
+
+    <form>
+        <div id="results">
+            <p id="data"></p>
+            <p id="tyo"></p>
+            <p id="optiot"></p>
+            <p id="o_nro"></p>
+        </div>
+    </form>
+</body>
+
+</html>

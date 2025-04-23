@@ -1,0 +1,56 @@
+[
+    {
+      "avain": "20095",
+      "nimi": "Customer A",
+      "osoite": "Address 1",
+      "postinro": "00100",
+      "postitmp": "City A",
+      "luontipvm": "2024-03-16",
+      "asty_avain": "1"
+    },
+    {
+      "avain": "20096",
+      "nimi": "Customer B",
+      "osoite": "Address 2",
+      "postinro": "00200",
+      "postitmp": "City B",
+      "luontipvm": "2024-03-16",
+      "asty_avain": "1"
+    },
+    {
+      "avain": "20101",
+      "nimi": "Customer C",
+      "osoite": "Address 3",
+      "postinro": "00300",
+      "postitmp": "City C",
+      "luontipvm": "2024-03-16",
+      "asty_avain": "1"
+    },
+    {
+      "avain": "20102",
+      "nimi": "Customer D",
+      "osoite": "Address 4",
+      "postinro": "00400",
+      "postitmp": "City D",
+      "luontipvm": "2024-03-17",
+      "asty_avain": "1"
+    },
+    {
+      "avain": "20103",
+      "nimi": "Customer E",
+      "osoite": "Address 5",
+      "postinro": "00500",
+      "postitmp": "City E",
+      "luontipvm": "2024-03-17",
+      "asty_avain": "1"
+    },
+    {
+      "avain": "20104",
+      "nimi": "Customer F",
+      "osoite": "Address 6",
+      "postinro": "00600",
+      "postitmp": "City F",
+      "luontipvm": "2024-03-17",
+      "asty_avain": "5"
+    }
+]

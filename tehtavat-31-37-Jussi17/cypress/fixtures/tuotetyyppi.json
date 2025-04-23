@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "nimi": "TESTmaitotuotteet",
+    "koodi": "001ma"
+  },
+  {
+    "id": "2",
+    "nimi": "juustot",
+    "koodi": "002ju"
+  },
+  {
+    "id": "3",
+    "nimi": "hedelmät",
+    "koodi": "003he"
+  },
+  {
+    "id": "4",
+    "nimi": "leivät",
+    "koodi": "004le"
+  },
+  {
+    "id": "5",
+    "nimi": "liha",
+    "koodi": "005li"
+  },
+  {
+    "id": "6",
+    "nimi": "säilykkeet",
+    "koodi": "006sa"
+  },
+  {
+    "id": "7",
+    "nimi": "valmisruoka",
+    "koodi": "007va"
+  },
+  {
+    "id": "8",
+    "nimi": "kissanruoat",
+    "koodi": "008ki"
+  },
+  {
+    "id": "9",
+    "nimi": "mausteet",
+    "koodi": "009ma"
+  },
+  {
+    "id": "10",
+    "nimi": "pakasteet",
+    "koodi": "010pa"
+  }
+]
